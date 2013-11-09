@@ -34,6 +34,11 @@
         android:fragment="com.android.settings.cyanogenmod.NotificationDrawer"
         android:title="@string/notification_drawer_title" />
 
+    <PreferenceScreen
+        android:key="keyboard_input_settings"
+        android:fragment="com.android.settings.blackout.InputMethodsSettings"
+        android:title="@string/title_keyboard_input" />
+
     <!-- Active display -->	
     <PreferenceScreen	
         android:key="active_display"	
