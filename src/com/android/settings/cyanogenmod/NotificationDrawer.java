@@ -32,6 +32,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
@@ -44,6 +45,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.MediaStore;
@@ -60,6 +62,8 @@ import net.margaritov.preference.colorpicker.ColorPickerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.android.internal.util.blackout.DeviceUtils;
+
 public class NotificationDrawer extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "NotificationDrawer";
@@ -69,12 +73,15 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
     private static final String PREF_NOTIFICATION_WALLPAPER_ALPHA = "notification_wallpaper_alpha";
     private static final String PREF_NOTIFICATION_ALPHA = "notification_alpha"; 
     private static final String UI_COLLAPSE_BEHAVIOUR = "notification_drawer_collapse_on_dismiss";
+    private static final String PREF_NOTIFICATION_OPTIONS = "options";
+    private static final String PREF_NOTIFICATION_HIDE_CARRIER = "notification_hide_carrier";
 
     private ListPreference mCollapseOnDismiss;
     private ListPreference mNotificationWallpaper;
     private ListPreference mNotificationWallpaperLandscape;
     SeekBarPreference mWallpaperAlpha;
     SeekBarPreference mNotifAlpha; 
+    CheckBoxPreference mHideCarrier;
 
     private File customnavTemp;
     private File customnavTempLandscape;
@@ -96,6 +103,26 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.notification_drawer);
         PreferenceScreen prefScreen = getPreferenceScreen();
+
+        mHideCarrier = (CheckBoxPreference) findPreference(PREF_NOTIFICATION_HIDE_CARRIER);
+        boolean hideCarrier = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.NOTIFICATION_HIDE_CARRIER, 0) == 1;
+        mHideCarrier.setChecked(hideCarrier);
+        mHideCarrier.setOnPreferenceChangeListener(this);
+
+        PreferenceCategory additionalOptions =
+            (PreferenceCategory) prefScreen.findPreference(PREF_NOTIFICATION_OPTIONS);
+
+        PackageManager pm = getPackageManager();
+        boolean isMobileData = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
+
+        if (!DeviceUtils.isPhone(getActivity())
+            || !DeviceUtils.deviceSupportsMobileData(getActivity())) {
+            // Nothing for tablets, large screen devices and non mobile devices which doesn't show
+            // information in notification drawer.....remove options
+            additionalOptions.removePreference(mHideCarrier);
+            prefScreen.removePreference(additionalOptions);
+        }
 
         // Notification drawer
         int collapseBehaviour = Settings.System.getInt(getContentResolver(),
@@ -266,6 +293,11 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_COLLAPSE_ON_DISMISS, value);
             updateCollapseBehaviourSummary(value);
+            return true;
+        } else if (preference == mHideCarrier) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NOTIFICATION_HIDE_CARRIER,
+                    (Boolean) objValue ? 1 : 0);
             return true;
         } else if (preference == mWallpaperAlpha) {
             float valNav = Float.parseFloat((String) objValue);
