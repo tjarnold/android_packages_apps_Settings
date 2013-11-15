@@ -31,6 +31,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.provider.Settings;
@@ -43,6 +44,7 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.text.Editable;
 import android.util.Log;
 import android.util.Slog;
+import android.view.IWindowManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManagerGlobal;
@@ -69,6 +71,9 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
     private static final String KEY_LCD_DENSITY = "lcd_density";
     private static final int DIALOG_CUSTOM_DENSITY = 101;
     private static final String DENSITY_PROP = "persist.sys.lcd_density";
+
+    private static final String KEY_HARDWARE_KEYS = "hardware_keys";
+    private static final String KEY_PIE_SETTINGS = "pie_settings";
 
     private static ListPreference mLcdDensity;
     private static Activity mActivity;
