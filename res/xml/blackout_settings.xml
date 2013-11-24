@@ -34,6 +34,13 @@
         android:fragment="com.android.settings.blackout.NotificationDrawer"
         android:title="@string/notification_drawer_title" />
 
+    <!-- Active display -->	
+    <PreferenceScreen	
+        android:key="active_display"	
+        android:fragment="com.android.settings.crdroid.ActiveDisplaySettings"	
+        android:title="@string/ad_settings_title"	
+        android:summary="@string/ad_settings_summary" />    
+
     <ListPreference
         android:key="lcd_density"
         android:title="@string/custom_density_title"
