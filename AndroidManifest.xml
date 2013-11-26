@@ -1689,7 +1689,7 @@
             android:theme="@style/CryptKeeperBlankTheme"
         />
 
-        <!-- BlackoutROM Activities -->
+        <!-- Begin BlackoutROM Activities -->
         <activity android:name="Settings$BlackoutSettingsActivity"
                 android:label="@string/system_settings_title"
                 android:taskAffinity=""
@@ -1704,7 +1704,23 @@
                 android:resource="@id/blackout_settings" />
         </activity>
 
+        <activity android:name="Settings$HaloSettingsActivity"
+                android:label="@string/system_settings_title"
+                android:taskAffinity=""
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.blackout.Halo" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/halo_settings" />
+        </activity>
+
         <activity android:name=".slim.themes.ThemeSettings" />
+
+        <!-- End BlackoutROM Activities -->
 
         <activity android:name=".cyanogenmod.AutoBrightnessSetup"
                 android:excludeFromRecents="true"

@@ -74,6 +74,7 @@ import com.android.settings.applications.ManageApplications;
 import com.android.settings.applications.ProcessStatsUi;
 import com.android.settings.blacklist.BlacklistSettings;
 import com.android.settings.blackout.InterfaceSettings;
+import com.android.settings.blackout.Halo;
 import com.android.settings.bluetooth.BluetoothEnabler;
 import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.cyanogenmod.ButtonSettings;
@@ -369,6 +370,7 @@ public class Settings extends PreferenceActivity
         HomeSettings.class.getName(),
         LockscreenInterface.class.getName(),
         InterfaceSettings.class.getName(),
+        Halo.class.getName(),
         ButtonSettings.class.getName(),
         MoreDeviceSettings.class.getName(),
         ProfilesSettings.class.getName(),
@@ -1208,4 +1210,5 @@ public class Settings extends PreferenceActivity
     public static class ApnEditorActivity extends Settings { /* empty */ }
     public static class BlacklistSettingsActivity extends Settings { /* empty */ }
     public static class BlackoutSettingsActivity extends Settings { /* empty */ }
+    public static class HaloSettingsActivity extends Settings { /* empty */ }
 }
