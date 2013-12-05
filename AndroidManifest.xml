@@ -1720,6 +1720,8 @@
 
         <activity android:name=".slim.themes.ThemeSettings" />
 
+        <activity android:name=".InitD" />
+
         <!-- End BlackoutROM Activities -->
 
         <activity android:name=".cyanogenmod.AutoBrightnessSetup"
