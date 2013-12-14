@@ -1704,6 +1704,8 @@
                 android:resource="@id/blackout_settings" />
         </activity>
 
+        <activity android:name=".slim.themes.ThemeSettings" />
+
         <activity android:name=".cyanogenmod.AutoBrightnessSetup"
                 android:excludeFromRecents="true"
                 android:theme="@*android:style/Theme.Holo.Dialog.Alert" />
