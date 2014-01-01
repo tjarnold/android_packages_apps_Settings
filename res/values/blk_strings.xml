@@ -210,4 +210,9 @@
     <string name="ad_pocket_mode_off">Off</string>
     <string name="ad_pocket_mode_notifications">Notifications only</string>
     <string name="ad_pocket_mode_always">Always</string>
+
+    <!-- Breathing Notifications -->
+    <string name="breathing_notifications_title">Breathing Notifications</string>
+    <string name="sms_breath">Breathing SMS</string>
+    <string name="sms_breath_summary">Will give your sms notifications a breathing effect in the statusbar</string>
 </resources>

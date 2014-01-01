@@ -36,4 +36,13 @@
         android:title="@string/status_bar_double_tap_to_sleep_title"
         android:defaultValue="false" />
 
+    <PreferenceCategory
+        android:title="@string/breathing_notifications_title">
+
+        <CheckBoxPreference android:key="pref_key_sms_breath"
+            android:title="@string/sms_breath"
+            android:summary="@string/sms_breath_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
 </PreferenceScreen>

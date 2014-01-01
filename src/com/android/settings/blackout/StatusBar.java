@@ -27,9 +27,12 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
+
     private static final String STATUS_BAR_BATTERY = "status_bar_battery";
+    private static final String KEY_SMS_BREATH = "pref_key_sms_breath";
 
     private ListPreference mStatusBarBattery;
+    private CheckBoxPreference mSMSBreath;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,10 +44,15 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
         mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY);
 
+        mSMSBreath = (CheckBoxPreference) prefSet.findPreference(KEY_SMS_BREATH);
+
         int batteryStyle = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_BATTERY, 3);
         mStatusBarBattery.setValue(String.valueOf(batteryStyle));
         mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
         mStatusBarBattery.setOnPreferenceChangeListener(this);
+
+        mSMSBreath.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.KEY_SMS_BREATH, 0) == 1));
     }
 
     @Override
@@ -55,6 +63,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             int index = mStatusBarBattery.findIndexOfValue((String) newValue);
             Settings.System.putInt(resolver, Settings.System.STATUS_BAR_BATTERY, batteryStyle);
             mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
+            return true;
+        } else if (preference == mSMSBreath) {
+            value = mSMSBreath.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.KEY_SMS_BREATH, value ? 1 : 0);
             return true;
         }
         return false;
