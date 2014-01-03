@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The CyanogenMod project
+ * Copyright (C) 2013 BlackoutROM Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,21 @@
  * limitations under the License.
  */
 
-package com.android.settings.cyanogenmod;
+package com.android.settings.blackout;
 
+import android.app.ActivityManager;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.provider.Settings;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
-import android.provider.Settings;
+import android.preference.PreferenceCategory;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.util.Log;
 import android.view.WindowManagerGlobal;
 
@@ -32,9 +36,10 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
-public class SystemUiSettings extends SettingsPreferenceFragment  implements
+public class InterfaceSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
-    private static final String TAG = "SystemSettings";
+
+    private static final String TAG = "BlackoutSettings";
 
     private static final String KEY_EXPANDED_DESKTOP = "expanded_desktop";
     private static final String KEY_EXPANDED_DESKTOP_NO_NAVBAR = "expanded_desktop_no_navbar";
@@ -48,7 +53,7 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.system_ui_settings);
+        addPreferencesFromResource(R.xml.blackout_settings);
         PreferenceScreen prefScreen = getPreferenceScreen();
 
         // Expanded desktop

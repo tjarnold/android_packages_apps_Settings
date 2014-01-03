@@ -1689,8 +1689,8 @@
             android:theme="@style/CryptKeeperBlankTheme"
         />
 
-        <!-- CyanogenMod activities Start -->
-        <activity android:name="Settings$SystemSettingsActivity"
+        <!-- BlackoutROM Activities -->
+        <activity android:name="Settings$BlackoutSettingsActivity"
                 android:label="@string/system_settings_title"
                 android:taskAffinity=""
                 android:excludeFromRecents="true">
@@ -1699,9 +1699,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.cyanogenmod.SystemUiSettings" />
+                android:value="com.android.settings.blackout.InterfaceSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/system_settings" />
+                android:resource="@id/blackout_settings" />
         </activity>
 
         <activity android:name=".cyanogenmod.AutoBrightnessSetup"
