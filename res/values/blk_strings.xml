@@ -144,4 +144,16 @@
     <string name="dt_init_d_error">Init.d error</string>
     <string name="dm_init_d_error">It looks like init.d isn\'t setup properly. Please contact your ROM developer.</string>
     <string name="db_exit">Exit</string>
+
+    <!-- LCD Density Changer -->
+    <string name="custom_density_title">Custom lcd density</string>
+    <string name="custom_density">custom</string>
+    <string name="set_custom_density_title">Set custom density</string>
+    <string name="set_custom_density_set">Set</string>
+    <string name="reboot_now">Reboot</string>
+    <string name="dialog_reboot_title">Would you like to reboot?</string>
+    <string name="dialog_reboot_summary">You must reboot to apply new density</string>
+    <string name="custom_density_summary_invalid">"INVALID DENSITY!"</string>
+    <string name="dpi">DPI</string>
+    <string name="current_lcd_density">"Current LCD Density: "</string>
 </resources>
