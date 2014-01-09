@@ -18,9 +18,11 @@ package com.android.settings.blackout;
 
 import android.content.ContentResolver;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceScreen;
 import android.provider.Settings;
 
 import com.android.settings.R;
@@ -44,6 +46,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
         addPreferencesFromResource(R.xml.status_bar);
 
+        PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
 
         mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY);
@@ -72,7 +75,14 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.System.putInt(resolver, Settings.System.STATUS_BAR_BATTERY, batteryStyle);
             mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
             return true;
-        } else if (preference == mSMSBreath) {
+        }
+        return false;
+    }
+
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        boolean value;
+        if (preference == mSMSBreath) {
             value = mSMSBreath.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.KEY_SMS_BREATH, value ? 1 : 0);
