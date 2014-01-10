@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2012 The CyanogenMod project
  * Copyright (C) 2013 BlackoutROM Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.blackout;
+package com.android.settings.cyanogenmod;
 
 import android.content.ContentResolver;
 import android.os.Bundle;
