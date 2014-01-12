@@ -267,4 +267,21 @@
     <string name="clock_date_style_uppercase">Uppercase</string>
     <string name="clock_date_format_custom">Custom java format</string>
     <string name="status_bar_clock_style_reset_message">Reset clock color?</string>
+
+    <!-- Notification Drawer Settings -->
+    <string name="notification_drawer_title">Notification drawer</string>
+    <string name="notification_drawer_style_title">Style</string>
+    <string name="notification_style_summary">Change your notification drawer style</string>
+    <string name="notification_drawer_background">Background and transparency</string> 
+
+    <!-- Notification drawer background -->
+    <string name="notification_wallpaper">Custom Background</string>
+    <string name="notification_wallpaper_title">Notification drawer background</string>
+    <string name="notification_wallpaper_landscape_title">Different landscape background</string>
+    <string name="notification_background_color_fill">Color fill</string>
+    <string name="notification_background_custom_image">Custom image</string>
+    <string name="notification_background_default_wallpaper">Default background</string>
+    <string name="notification_drawer_custom_background_dialog_title">Choose color</string>
+    <string name="notif_wallpaper_alpha_title">Notification background transparency</string> 
+    <string name="notif_alpha_title">Notification row transparency</string>
 </resources>
