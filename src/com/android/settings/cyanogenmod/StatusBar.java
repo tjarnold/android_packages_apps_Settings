@@ -81,7 +81,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private ListPreference mClockStyle;
 
     private ListPreference mStatusBarBattery;
-    private SystemSettingCheckBoxPreference mStatusBarBatteryShowPercent;
+    private CheckBoxPreference mStatusBarBatteryShowPercent;
     private ListPreference mStatusBarCmSignal;
 
     private boolean mCheckPreferences;
@@ -109,6 +109,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         CheckBoxPreference statusBarBrightnessControl = (CheckBoxPreference)
                 prefSet.findPreference(Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL);
 
+        mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY);
+        mStatusBarBatteryShowPercent =
+                (CheckBoxPreference) findPreference(STATUS_BAR_BATTERY_SHOW_PERCENT);
+        mStatusBarCmSignal = (ListPreference) prefSet.findPreference(STATUS_BAR_SIGNAL);
+
         try {
             if (Settings.System.getInt(resolver, Settings.System.SCREEN_BRIGHTNESS_MODE)
                     == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
@@ -131,15 +136,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 .getContentResolver(), Settings.System.STATUSBAR_CLOCK_DATE_STYLE, 0)));
         mClockDateStyle.setSummary(mClockDateStyle.getEntry());
 
-        mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY);
-        mStatusBarBatteryShowPercent =
-                (SystemSettingCheckBoxPreference) findPreference(STATUS_BAR_BATTERY_SHOW_PERCENT);
         int batteryStyle = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_BATTERY, 0);
         mStatusBarBattery.setValue(String.valueOf(batteryStyle));
         mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
         mStatusBarBattery.setOnPreferenceChangeListener(this);
 
-        mStatusBarCmSignal = (ListPreference) prefSet.findPreference(STATUS_BAR_SIGNAL);
         int signalStyle = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_SIGNAL_TEXT, 0);
         mStatusBarCmSignal.setValue(String.valueOf(signalStyle));
         mStatusBarCmSignal.setSummary(mStatusBarCmSignal.getEntry());
