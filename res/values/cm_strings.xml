@@ -217,6 +217,12 @@
     <string name="wake_when_plugged_or_unplugged_title">Wake on plug</string>
     <string name="wake_when_plugged_or_unplugged_summary">Turn the screen on when connecting or disconnecting the charger</string>
 
+    <!-- Lights settings screen, screen animation options -->
+    <string name="screen_animation_off_title">Screen-off animation</string>
+    <string name="screen_animation_style_title">Animation style</string>
+    <string name="screen_animation_style_electronbeam">Electron beam</string>
+    <string name="screen_animation_style_fade">Fade out</string>
+
     <!-- Notification light dialogs -->
     <string name="edit_light_settings">Edit light settings</string>
     <string name="pulse_speed_title">Pulse length and speed</string>
@@ -464,8 +470,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Quiet hours -->
     <string name="quiet_hours_title">Quiet hours</string>
     <string name="quiet_hours_summary">Configure the hours the device should be quiet</string>
-    <string name="quiet_hours_note_summary">Note: Incoming calls will not be affected by quiet hours and will ring like normal</string>
     <string name="quiet_hours_enabled">Enforce quiet hours</string>
+    <string name="quiet_hours_ringer">Phone ringer</string>
     <string name="quiet_hours_mute">Mute notifications</string>
     <string name="quiet_hours_system">Disable system sounds</string>
     <string name="quiet_hours_still">Disable vibrations</string>
@@ -474,10 +480,15 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="quiet_hours_active_from">Active from</string>
     <string name="quiet_hours_active_to">to</string>
 
+    <!-- Ringer mute options -->
+    <string name="quiet_hours_ringer_allow_all">Ring for all callers</string>
+    <string name="quiet_hours_ringer_allow_contacts">Ring for all contacts</string>
+    <string name="quiet_hours_ringer_allow_starred">Ring for favorite contacts</string>
+    <string name="quiet_hours_ringer_mute_all">Mute ringer for all callers</string>
+
     <!-- time range preference -->
     <string name="start_time_title">Start</string>
     <string name="end_time_title">End</string>
-
 
     <!-- About phone screen,  setting option name -->
     <string name="mod_version">CyanogenMod version</string>
@@ -701,6 +712,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="collapse_on_dismiss_if_empty_summary">Close after removing the last notification</string>
     <string name="collapse_on_dismiss_if_no_clearable_summary">Close after removing the last removable notification</string>
 
+    <!-- tap-to-wake -->
+    <string name="double_tap_to_wake_title">Double-tap to wake</string>
+
     <!-- Quick access ribbon -->
     <string name="category_quick_access">Quick Access ribbon</string>
     <string name="title_quick_access">Show in drawer</string>
@@ -714,7 +728,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Sms security limit -->
     <string name="sms_security_check_limit_title">SMS message limit</string>
     <string name="sms_security_check_limit_summary">Apps can send %d messages in 30 minutes before requiring confirmation</string>
+    <string name="sms_security_check_limit_summary_none">Apps are not allowed to send any messages without confirmation</string>
     <string name="sms_security_check_limit_default">30 (Default)</string>
+    <string name="sms_security_check_limit_none">None</string>
 
     <!-- Custom widgets -->
     <string name="lockscreen_custom_widgets_title">Custom widgets</string>
