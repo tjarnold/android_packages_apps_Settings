@@ -100,26 +100,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
         int expandedDesktopValue = Settings.System.getInt(getContentResolver(),
                 Settings.System.EXPANDED_DESKTOP_STYLE, 0);
 
-        try {
-            boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar();
-
-            if (hasNavBar) {
-                mExpandedDesktopPref.setOnPreferenceChangeListener(this);
-                mExpandedDesktopPref.setValue(String.valueOf(expandedDesktopValue));
-                updateExpandedDesktop(expandedDesktopValue);
-                prefScreen.removePreference(mExpandedDesktopNoNavbarPref);
-            } else {
-                // Hide no-op "Status bar visible" expanded desktop mode
-                mExpandedDesktopNoNavbarPref.setOnPreferenceChangeListener(this);
-                mExpandedDesktopNoNavbarPref.setChecked(expandedDesktopValue > 0);
-                prefScreen.removePreference(mExpandedDesktopPref);
-                // Hide navigation bar category
-                prefScreen.removePreference(findPreference(CATEGORY_NAVBAR));
-            }
-        } catch (RemoteException e) {
-            Log.e(TAG, "Error getting navigation bar status");
-        }
-
         mLcdDensity = (ListPreference) findPreference(KEY_LCD_DENSITY);
         String current = SystemProperties.get(DENSITY_PROP,
                 SystemProperties.get("ro.sf.lcd_density"));
